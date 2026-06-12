@@ -83,6 +83,22 @@ python -m pip install -r requirements.txt
 
 如果 `faiss-cpu` 在 Windows 环境安装失败，项目会在构建向量库时自动退回到 NumPy 点积检索，保证 demo 可运行。正式实验或简历展示建议在 Linux、WSL 或 Conda 环境中安装 FAISS。
 
+## GitHub 版本说明
+
+GitHub 仓库默认只包含源码、配置、README、测试、demo 知识库和轻量医学知识图谱，不包含以下本地生成或大体积文件：
+
+- `outputs/`：NER 模型权重、评估报告、向量库、日志等。
+- `data/raw/`：原始下载数据。
+- `data/processed/`：转换后的 BIO 训练数据。
+- `.venv/`、缓存和临时文件。
+
+这样做是为了避免把大模型权重和本机缓存提交到 GitHub。当前 active NER 模型权重约 388MB，普通 GitHub 仓库不适合直接提交。
+
+因此，其他人使用本仓库有两种方式：
+
+1. **源码复现实验**：clone 仓库后按 README 运行 `prepare_ner_data.py`、`train_ner.py`、`evaluate_ner.py`、`build_vector_db.py`，重新生成本地模型和向量库。
+2. **完整演示包**：从 GitHub Release 下载包含 `outputs/` 的迁移压缩包，解压后按 `TRANSFER_README.txt` 创建虚拟环境并安装依赖，即可加载已训练模型和向量库进行展示。
+
 ## 数据准备
 
 生成内置 demo 数据：
