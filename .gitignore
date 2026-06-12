@@ -1,0 +1,39 @@
+# Python cache/build artifacts
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+build/
+dist/
+*.egg-info/
+
+# Virtual environments and local dependency caches
+.venv/
+venv/
+env/
+.pip-cache/
+.hf-cache/
+.tmp/
+
+# Streamlit and local runtime files
+.streamlit/secrets.toml
+
+# Large or generated ML artifacts
+models/
+outputs/
+
+# Raw/downloaded datasets and generated processed splits
+data/raw/
+data/processed/
+data/medical_kg/medical_kg_cmeie.csv
+data/medical_kg/medical_kg_cmeie_reviewed.csv
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/

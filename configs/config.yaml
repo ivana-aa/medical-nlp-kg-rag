@@ -1,0 +1,49 @@
+project:
+  name: "基于中文医疗文本的实体识别与医疗问答系统"
+  seed: 42
+  device: "auto"
+
+ner:
+  model_name: "hfl/chinese-macbert-base"
+  data_dir: "data/processed/ner_train"
+  train_file: "train.bio"
+  dev_file: "dev.bio"
+  test_file: "test.bio"
+  output_dir: "outputs/ner_model"
+  max_length: 128
+  batch_size: 8
+  num_epochs: 3
+  learning_rate: 0.00005
+  weight_decay: 0.01
+  labels:
+    - O
+    - B-DISEASE
+    - I-DISEASE
+    - B-SYMPTOM
+    - I-SYMPTOM
+    - B-DRUG
+    - I-DRUG
+    - B-EXAM
+    - I-EXAM
+    - B-SURGERY
+    - I-SURGERY
+    - B-BODY
+    - I-BODY
+    - B-TEST
+    - I-TEST
+
+rag:
+  knowledge_base_dir: "data/knowledge_base"
+  vector_store_dir: "outputs/vector_db"
+  embedding_model: "shibing624/text2vec-base-chinese"
+  chunk_size: 400
+  chunk_overlap: 80
+  top_k: 4
+  retrieval_mode: "hybrid"
+  bm25_top_k: 8
+  rrf_rank_constant: 60
+  normalize_embeddings: true
+
+qa:
+  max_evidence_chars: 900
+  disclaimer: "风险提示：本回答仅供学习和参考，不能替代医生诊断或治疗建议；如有不适或病情变化，请及时到正规医疗机构就诊。"

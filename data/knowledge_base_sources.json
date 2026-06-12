@@ -1,0 +1,34 @@
+[
+  {
+    "id": "medquad",
+    "name": "MedQuAD",
+    "url": "https://github.com/abachaa/MedQuAD",
+    "license": "CC BY 4.0",
+    "language": "English",
+    "usage": "医疗问答、RAG 证据库、问答系统微调。项目中的中文条目为学习用途的改写摘要，不包含真实患者隐私。"
+  },
+  {
+    "id": "pmc_oa",
+    "name": "PMC Open Access Subset",
+    "url": "https://pmc.ncbi.nlm.nih.gov/tools/openftlist/",
+    "license": "按单篇文章许可证确认，常见为 Creative Commons 或类似开放许可证",
+    "language": "English",
+    "usage": "开放获取医学论文全文，可用于文献型 RAG、摘要生成、证据检索。使用时必须保留文章来源和许可证信息。"
+  },
+  {
+    "id": "europe_pmc_oa",
+    "name": "Europe PMC Open Access",
+    "url": "https://europepmc.org/downloads/openaccess",
+    "license": "按单篇文章许可证确认，许可条款不完全相同",
+    "language": "English",
+    "usage": "Europe PMC 开放获取全文下载入口，可作为 PMC OA 的补充来源。"
+  },
+  {
+    "id": "manual_demo",
+    "name": "Manual Chinese Demo Notes",
+    "url": "local://data/knowledge_base",
+    "license": "项目内人工编写",
+    "language": "Chinese",
+    "usage": "用于离线演示中文医学问答流程，不代表临床诊断建议。"
+  }
+]

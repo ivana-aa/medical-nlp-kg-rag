@@ -1,0 +1,5 @@
+# Optional dependencies for downloading public datasets from OpenDataLab/OpenXLab.
+# The main demo does not need this file. Install it only when you want to
+# download CMeEE through OpenDataLab:
+#   py -m pip install -r requirements-opendatalab.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
+openxlab>=0.1.3
