@@ -1,10 +1,10 @@
-# Chinese Medical NLP: NER, Knowledge Graph and RAG QA
+# 中文医疗 NLP：实体识别、知识图谱与 RAG 问答系统
 
 一个中文医疗自然语言处理工程示例，包含中文医疗命名实体识别、医学知识图谱构建、检索增强生成问答和 Graph-RAG 问答。项目优先使用公开数据源和本地可复现流程，不使用真实患者病历，不采集或存储患者隐私信息。
 
 > 医疗安全声明：本项目仅用于 NLP 学习、工程验证和医学科普场景演示，不提供医疗诊断、治疗方案或用药建议。所有问答结果都应视为参考信息，不能替代医生诊断或治疗建议。如有不适或病情变化，请及时咨询正规医疗机构。
 
-## Features
+## 功能特性
 
 - 中文医疗 NER：基于 PyTorch 和 Transformers 的 BERT token classification，支持 BIO 标注、训练、验证、测试和推理。
 - 医疗实体类型：疾病、症状、药物、检查、手术、身体部位、医学检验指标。
@@ -16,7 +16,7 @@
 - Streamlit Web UI：提供项目状态、RAG 问答、NER 识别、知识图谱和 Graph-RAG 演示页面。
 - 测试用例：包含 NER 后处理、CMeIE 导入、KG 过滤和 RAG 混合检索等单元测试。
 
-## Repository vs Release Package
+## 源码仓库与 Release 包
 
 本仓库只跟踪源码、配置、脚本、测试和小型示例数据。大型运行产物不提交到 Git，包括模型权重、向量库、原始下载数据和运行日志。
 
@@ -31,9 +31,9 @@
 - ZIP: [medical_nlp_project_transfer_20260611_202644.zip](https://github.com/ivana-aa/medical-nlp-kg-rag/releases/download/v1.0.0/medical_nlp_project_transfer_20260611_202644.zip)
 - ZIP 大小约 366 MB，包含 active NER 模型和已构建向量库。
 
-## Quick Start
+## 快速开始
 
-### Option A: Run the Release Package
+### 方式一：运行 Release 完整演示包
 
 适合直接体验 Web 页面和推理功能。
 
@@ -66,7 +66,7 @@ outputs\vector_db\chunks.json
 data\medical_kg\medical_kg.csv
 ```
 
-### Option B: Reproduce from Source
+### 方式二：从源码复现
 
 适合从源码重新生成 demo 数据、训练模型并构建向量库。
 
@@ -92,7 +92,7 @@ Windows 环境中如果 `faiss-cpu` 安装失败，可以先安装其余依赖�
 pip install torch transformers sentence-transformers streamlit numpy pandas PyYAML seqeval tqdm scikit-learn requests networkx
 ```
 
-## Data Sources and Compliance
+## 数据来源与合规说明
 
 项目只面向公开、可授权使用的医学文本或人工 demo 文本。使用者需要自行遵守各数据源的许可证、引用要求和账号注册要求。
 
@@ -114,7 +114,7 @@ pip install torch transformers sentence-transformers streamlit numpy pandas PyYA
 - 包含患者姓名、身份证号、手机号、住址、住院号等隐私字段的数据。
 - 未确认授权范围的非开放许可全文。
 
-## Project Structure
+## 项目结构
 
 ```text
 medical_nlp_project/
@@ -149,7 +149,7 @@ medical_nlp_project/
 
 `outputs/`、`data/raw/`、`data/processed/`、`.venv/` 和缓存目录默认不提交到 Git。
 
-## Configuration
+## 配置说明
 
 主要配置集中在 `configs/config.yaml`：
 
@@ -161,7 +161,7 @@ medical_nlp_project/
 - `rag.retrieval_mode`: 默认 `hybrid`
 - `rag.top_k`: 默认召回证据数量
 
-## NER Module
+## NER 模块
 
 NER 数据采用 BIO 格式，每行一个字符和一个标签，句子之间用空行分隔：
 
@@ -203,7 +203,7 @@ Release v1.0.0 中包含一个 active CMeEE 采样训练 checkpoint。该 checkp
 
 该结果用于工程流程验证，不代表临床级实体识别能力。
 
-## CMeEE Data Workflow
+## CMeEE 数据流程
 
 使用 OpenDataLab / OpenXLab 下载 CMeEE 通常需要先登录并配置访问凭证。安装额外依赖：
 
@@ -229,7 +229,7 @@ python scripts\prepare_ner_data.py --cmeee-dir data\raw\CMeEE
 python scripts\sample_ner_data.py --source-dir data\processed\ner_demo --target-dir data\processed\ner_train --train 2000 --dev 500 --test 500
 ```
 
-## RAG Module
+## RAG 模块
 
 本地知识库目录：
 
@@ -263,7 +263,7 @@ python scripts\import_medquad.py --max-pairs 30
 python scripts\build_vector_db.py
 ```
 
-## Knowledge Graph and Graph-RAG
+## 知识图谱与 Graph-RAG
 
 项目使用 CSV 存储轻量医学知识图谱三元组，并通过 NetworkX 加载检索。CMeIE 风格数据可转换为如下格式：
 
@@ -290,7 +290,7 @@ Graph-RAG 会同时检索：
 - 医学知识图谱三元组。
 - 与问题实体相关的邻接关系。
 
-## Web UI
+## Web 页面
 
 启动 Streamlit：
 
@@ -326,7 +326,7 @@ What is Adult Acute Lymphoblastic Leukemia?
 患者出现头痛和胸闷，医生建议进行血压检查，并考虑使用硝苯地平。
 ```
 
-## Tests
+## 测试
 
 运行全部单元测试：
 
@@ -341,7 +341,7 @@ python -m unittest discover -s tests
 - NER predictor 后处理。
 - RAG hybrid retriever。
 
-## Artifact Policy
+## 运行产物管理策略
 
 GitHub 仓库不提交大型运行产物，原因是模型权重、向量库和原始数据会显著增大仓库体积，也可能包含不同数据源的许可证约束。
 
@@ -357,7 +357,7 @@ __pycache__/
 
 需要完整可运行演示时，请使用 GitHub Release 包。需要复现实验时，请从公开数据源重新下载数据并运行脚本生成产物。
 
-## Limitations
+## 局限性
 
 - 示例模型和 demo 数据用于验证工程链路，不代表医学临床性能。
 - 默认回答生成方式是基于检索证据的模板式生成，不接入外部大语言模型 API。
@@ -365,7 +365,7 @@ __pycache__/
 - CMeEE、CMeIE、PMC OA 等真实数据集的使用需要遵守原始许可证、注册要求和引用要求。
 - 医疗文本具有高风险属性，生产环境需要专家标注、严格评测、隐私审查和合规审核。
 
-## Roadmap
+## 后续规划
 
 - 引入更大规模 CMeEE/CMeIE 数据训练和系统化超参数搜索。
 - 增加实体标准化，将疾病、药物、检查映射到医学术语库。
@@ -374,7 +374,7 @@ __pycache__/
 - 增加 RAG 评测集，评估召回率、答案忠实性和引用一致性。
 - 扩展知识图谱 schema，增加关系置信度、来源许可证和审核状态字段。
 
-## License and Citation Notes
+## 许可证与引用说明
 
 项目代码可用于学习和工程实验。第三方数据集、预训练模型和论文全文不随源码仓库再分发，使用者需要分别遵守其原始许可证、引用格式和下载平台规则。
 
@@ -386,6 +386,6 @@ __pycache__/
 - 是否经过抽样、清洗、格式转换。
 - 许可证或使用条款。
 
-## Medical Safety Disclaimer
+## 医疗安全声明
 
 本项目输出的所有医学回答都必须带有风险提示。系统回答仅供学习和参考，不能替代医生诊断或治疗建议。如有不适、急症或病情变化，应及时就医。
