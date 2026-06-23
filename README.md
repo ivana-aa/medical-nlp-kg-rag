@@ -66,7 +66,36 @@ outputs\vector_db\chunks.json
 data\medical_kg\medical_kg.csv
 ```
 
-### 方式二：从源码复现
+### 方式二：使用 Docker 启动
+
+适合希望减少本机 Python 环境配置的人。需要先安装并启动 Docker Desktop。
+
+如果只克隆源码仓库，仓库中不包含大型模型权重和向量库；完整演示建议先下载 Release ZIP 并解压，使项目目录中包含 `outputs/` 和知识库运行产物。
+
+```powershell
+git clone https://github.com/ivana-aa/medical-nlp-kg-rag.git
+cd medical-nlp-kg-rag
+
+# 如果使用 Release 完整演示包，请在解压后的项目目录中执行下面命令
+docker compose build
+docker compose up -d
+```
+
+浏览器打开：
+
+```text
+http://localhost:8501
+```
+
+停止服务：
+
+```powershell
+docker compose down
+```
+
+Docker 说明文档见 [`docker/README_DOCKER.md`](docker/README_DOCKER.md)，面向初学者的原理说明见 [`docs/docker_for_interns.md`](docs/docker_for_interns.md)。
+
+### 方式三：从源码复现
 
 适合从源码重新生成 demo 数据、训练模型并构建向量库。
 

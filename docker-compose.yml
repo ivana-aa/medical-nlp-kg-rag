@@ -1,0 +1,26 @@
+services:
+  medical-nlp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: medical-nlp-project:dockerized
+    container_name: medical-nlp-project
+    ports:
+      - "8501:8501"
+    environment:
+      STREAMLIT_SERVER_HEADLESS: "true"
+      STREAMLIT_BROWSER_GATHER_USAGE_STATS: "false"
+      HF_HOME: "/cache/huggingface"
+      SENTENCE_TRANSFORMERS_HOME: "/cache/sentence-transformers"
+    volumes:
+      - ./outputs:/app/outputs:ro
+      - ./data/knowledge_base:/app/data/knowledge_base:ro
+      - ./data/medical_kg:/app/data/medical_kg:ro
+      - ./data/knowledge_base_sources.json:/app/data/knowledge_base_sources.json:ro
+      - huggingface_cache:/cache/huggingface
+      - sentence_transformers_cache:/cache/sentence-transformers
+    restart: unless-stopped
+
+volumes:
+  huggingface_cache:
+  sentence_transformers_cache:
